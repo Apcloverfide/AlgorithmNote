@@ -79,3 +79,73 @@ int main(){
 
 
 //解法二：深搜
+#include <cstring>
+#include <iostream>
+using namespace std;
+int n, m;   //右下角的坐标
+int x, y;   //马的坐标
+int ans;
+int f[20][20];
+void dfs(int a,int b){
+    //递归终点
+    if(f[a][b] == 1)
+        return;
+    if(a == n && b==m){
+        ans++;
+        return;
+    }
+    //移动，只能向下或者向右移动
+    if(a <= n){
+        a++;
+        dfs(a,b);
+        a--;
+    }
+    if(b <= m){
+        b++;
+        dfs(a,b);
+        b--;
+    }
+
+}
+void init(){
+    if(x>=2) {
+        if(y-1>=0)
+            f[x - 2][y-1] = 1;
+        if(y+1<=m)
+            f[x - 2][y+1] = 1;
+    }
+    if(x+2 <= n){
+        if(y-1>=0)
+            f[x + 2][y-1] = 1;
+        if(y+1<=m)
+            f[x + 2][y+1] = 1;
+    }
+    if(y - 2 >= 0){
+        if(x - 1 >= 0)
+            f[x - 1][y-2] = 1;
+        if(x + 1 <= n)
+            f[x + 1][y-2] = 1;
+    }
+    if(y + 2 <= m) {
+        if (x - 1 >= 0)
+            f[x - 1][y + 2] = 1;
+        if (x + 1 <= n)
+            f[x + 1][y + 2] = 1;
+    }
+    f[x][y] = 1;
+}
+int main(){
+    //memset(f,2, sizeof(f));
+    cin >> n >> m;
+    cin >> x >> y;
+    init();
+//    for(int i = 0;i < n;i++){
+//        for(int j = 0;j < m;j++){
+//            cout << f[i][j] << " ";
+//        }
+//        cout << endl;
+//    }
+    //swap(m,n);
+    dfs(0,0);
+    cout << ans <<endl;
+}  
