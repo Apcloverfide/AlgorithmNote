@@ -1,0 +1,10 @@
+//https://www.cnblogs.com/ECJTUACM-873284962/p/6995648.html
+for(k=0;k<n;k++)//注意最外层是对k进行循环，不要把K放到最里层去了,十字交叉法
+    { 
+        for(i=0;i<n;i++)
+          　　for(j=0;j<n;j++)
+              　　if(A[i][j]>(A[i][k]+A[k][j])){
+                    　　A[i][j]=A[i][k]+A[k][j];
+                    　　path[i][j]=k;
+               　 } 
+    } 
