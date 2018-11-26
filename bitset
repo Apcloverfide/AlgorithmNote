@@ -1,0 +1,3 @@
+//包含头文件 #include<bitset>
+bitset<N> bit = x;
+//把十进制的x转化为有N位二进制数，高位不足用0填补
