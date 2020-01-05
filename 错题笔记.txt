@@ -1,1 +1,1 @@
-<1>   bool 数组定义默认是垃圾值，定义为全局时为0，int double都为0
+<1>   bool 数组定义默认是垃圾值，定义为全局时为0，int double都为0，不放心的话用memset(str, 0,sizeof(str))
